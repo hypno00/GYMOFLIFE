@@ -61,6 +61,8 @@ public class MainActivity extends Activity {
                     String parse_usuario = usuario.getText().toString();
                     String parse_correo  = correo.getText().toString();
                     String parse_clave   = clave.getText().toString();
+                    int parse_edad       = Integer.parseInt(edad.getText().toString());
+                    String parse_nombre  = nombre.getText().toString();
 
                     if(parse_usuario.equals("")){
                         Toast.makeText(context, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
@@ -69,6 +71,8 @@ public class MainActivity extends Activity {
                         user.setUsername(parse_usuario);
                         user.setPassword(parse_clave);
                         user.setEmail(parse_correo);
+                        user.put("Edad" , parse_edad);
+                        user.put("Nombre", parse_nombre);
                         user.signUpInBackground(new SignUpCallback() {
                             public void done(ParseException e) {
                                 if (e == null) {
